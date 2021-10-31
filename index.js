@@ -32,6 +32,11 @@ function questionManager () {
         name: 'email',
         message: `What is the manager's email?`,
       },
+      {
+        type: 'input',
+        name: 'officeNumber',
+        message: `What is the manager's office number?`,
+      },
 ])
 .then(answers => {
   const managerInput = new Manager(answers.name, answers.id, answers.email, answers.role)
@@ -55,7 +60,8 @@ function nextMember() {
     } else if (answers.engineerOrIntern === "Intern"){
       internMember();
     }else {
-      profileGenerator();
+      // profileGenerator();
+      console.log(allMembers)
     }
   })
 }
@@ -137,13 +143,13 @@ function writeToFile(fileName, data) {
     });
 }
 
-function profileGenerator() {
-  inquirer.prompt(questionManager)
-  .then(answers => {
-      writeToFile('write.txt', generateMarkdown(answers));
-      console.log(answers)
-  })
-}
+// function profileGenerator() {
+//   inquirer.prompt(questionManager)
+//   .then(answers => {
+//       writeToFile('write.txt', generateMarkdown(answers));
+//       console.log(answers)
+//   })
+// }
 
 
 // function init() {
